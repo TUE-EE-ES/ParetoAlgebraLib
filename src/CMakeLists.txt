@@ -6,7 +6,7 @@ include_directories(. ../cudd/cudd ../gbdd)
 
 add_compile_options(-Wno-deprecated-declarations)
 
-add_executable(ParetoCalculator
+add_library(ParetoCalculator STATIC
 	bddconfset.cc
 	conf.cc
 	explicit.cc
@@ -15,6 +15,6 @@ add_executable(ParetoCalculator
 	symbolic.cc
 )
 
-link_directories(../gbdd/)
-target_link_libraries(ParetoCalculator GBDD)
+#link_directories(../gbdd/)
+#target_link_libraries(ParetoCalculator "/home/mgeilen/temp/gbdd/libGBDD.a" "/home/mgeilen/temp/cudd/cudd/.libs/libcudd.a")
 
