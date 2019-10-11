@@ -29,6 +29,9 @@
 #include <exception>
 #include <set>
 
+#include <cstring>
+
+
 using namespace std;
 
 /*
