@@ -30,14 +30,14 @@
 
 #ifdef __GNUC__
 #	if __GNUC__ < 3
-#		include <hash_map.h>
-#		include <hash_set.h>
+#		include <unordered_map.h>
+#		include <unordered_set.h>
 		// inherit globals
-		namespace Sgi {using ::hash_map; using ::hash_set; using ::hash;};
+		namespace Sgi {using ::hash_map; using ::unordered_set; using ::hash;};
 #		define DECL_NAMESPACE_SGI namespace std
 #	else
-#		include <ext/hash_map>
-#		include <ext/hash_set>
+#		include <ext/unordered_map>
+#		include <ext/unordered_set>
 #		if __GNUC__ == 3 && __GNUC_MINOR__ == 0	// GCC 3.0
 			namespace Sgi = std;
 #			define DECL_NAMESPACE_SGI namespace std
@@ -47,15 +47,15 @@
 #		endif
 #	endif
 #else      // ...  there are other compilers, right?
-#include <hash_map>
-#include <hash_set>
+#include <unordered_map>
+#include <unordered_set>
 	namespace Sgi = stdext;
 #	define DECL_NAMESPACE_SGI namespace stdext
 
 #endif
 
-using Sgi::hash_map;
-using Sgi::hash_set;
+using Sgi::unordered_map;
+using Sgi::unordered_set;
 //using Sgi::hash;
 
 #endif /* GBDD_SGI_EXT_H */

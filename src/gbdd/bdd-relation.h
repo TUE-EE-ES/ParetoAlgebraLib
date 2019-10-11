@@ -175,10 +175,10 @@ namespace gbdd
 	typedef StructureBinaryView<Bdd, BddRelation, BddSet> BddBinaryRelation;
 }
 
-DECL_NAMESPACE_SGI
-{
-
-
-}
+//DECL_NAMESPACE_SGI
+//{
+//
+//
+//}
 
 #endif /* BDD_RELATION_H */

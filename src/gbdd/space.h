@@ -25,6 +25,7 @@
 #define GBDD_SPACE_H
 
 //#include <sgi_ext.h>
+#include <unordered_set>
 #include <bool-constraint.h>
 #include <vector>
 #include <functional>
@@ -141,7 +142,7 @@ private:
 		}
 	};
 
-	Var bdd_highest_var(Bdd p, hash_set<Bdd>& cache);
+	Var bdd_highest_var(Bdd p, unordered_set<Bdd>& cache);
 public:
 	typedef BinaryFunction<bool, bool, bool> ProductFunction;
 	typedef UnaryFunction<bool, bool> UnaryProductFunction;

@@ -24,7 +24,7 @@
 #define GBDD_H
 
 
-#include <sgi_ext.h>
+//#include <sgi_ext.h>
 #include <space.h>
 //#include <gspace.h>
 //#include <buddy-space.h>

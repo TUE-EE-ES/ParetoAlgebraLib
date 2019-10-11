@@ -988,7 +988,7 @@ ostream& Bdd::print_dot(ostream& os) const
 	vector<Bdd> all_nodes = nodes();
 	Label next_label = 0;
 
-	typedef hash_map<Var,vector<Bdd> > VarBdds;
+	typedef unordered_map<Var,vector<Bdd> > VarBdds;
 
 	VarBdds nodes_with_var;
 

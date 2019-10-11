@@ -25,10 +25,10 @@
 #define GBDD_DOMAIN_H
 
 #include <set>
-#include <sgi_ext.h>
+//#include <sgi_ext.h>
 #include <assert.h>
 
-
+#include <unordered_map>
 namespace gbdd
 {
 
@@ -107,7 +107,7 @@ public:
  */
 
 
-	class VarMap : public hash_map<Var, Var>
+	class VarMap : public unordered_map<Var, Var>
 	{
 	public:
 		// Constructor
@@ -118,7 +118,7 @@ public:
  * @param map Hasp map mapping variables
  */
 
-		VarMap(const hash_map<Var, Var> &map) : hash_map<Var, Var>(map) {}
+		VarMap(const unordered_map<Var, Var> &map) : unordered_map<Var, Var>(map) {}
 
 /// Maps variable
 /**

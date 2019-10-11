@@ -29,7 +29,7 @@
 #include <domain.h>
 #include <bool-constraint.h>
 #include <set>
-#include <sgi_ext.h>
+//#include <sgi_ext.h>
 #include <queue>
 //#include <xhash>
 
@@ -538,15 +538,15 @@ static Bdd::FiniteVars operator*(const Bdd::FiniteVars& vs1, const Bdd::FiniteVa
 
 }
 
-DECL_NAMESPACE_SGI
-{
-
-/// Hash function for gbdd::Bdd
-/*struct hash<gbdd::Bdd>
-{
-	size_t operator()(gbdd::Bdd p) const;
-};*/
-
-}
+//DECL_NAMESPACE_SGI
+//{
+//
+///// Hash function for gbdd::Bdd
+///*struct hash<gbdd::Bdd>
+//{
+//	size_t operator()(gbdd::Bdd p) const;
+//};*/
+//
+//}
 
 #endif /* GBDD_BDD_H */
