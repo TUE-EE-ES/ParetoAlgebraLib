@@ -716,9 +716,9 @@ int Bdd::size() const
 
 	return res;
 }
-vector<Bdd> Bdd::nodes() const
+std::vector<Bdd> Bdd::nodes() const
 {
-	vector<Bdd> res;
+	std::vector<Bdd> res;
 	queue<Bdd> explore;
 
 	res.push_back(*this);
@@ -985,14 +985,14 @@ ostream& Bdd::print_dot(ostream& os) const
 
 	typedef unsigned int Label;
 
-	vector<Bdd> all_nodes = nodes();
+	std::vector<Bdd> all_nodes = nodes();
 	Label next_label = 0;
 
-	typedef unordered_map<Var,vector<Bdd> > VarBdds;
+	typedef unordered_map<Var,std::vector<Bdd> > VarBdds;
 
 	VarBdds nodes_with_var;
 
-	for (vector<Bdd>::const_iterator i = all_nodes.begin();i != all_nodes.end();++i)
+	for (std::vector<Bdd>::const_iterator i = all_nodes.begin();i != all_nodes.end();++i)
 	{
 		Bdd p = *i;
 
@@ -1043,12 +1043,12 @@ ostream& Bdd::print_dot(ostream& os) const
 
 	for (VarBdds::const_iterator i = nodes_with_var.begin();i != nodes_with_var.end();++i)
 	{
-		const vector<Bdd>& ps = i->second;
+		const std::vector<Bdd>& ps = i->second;
 		Var v = i->first;
 
 		os << "{ rank = same; v" << v << ";";
 
-		for (vector<Bdd>::const_iterator j = ps.begin();j != ps.end();++j)
+		for (std::vector<Bdd>::const_iterator j = ps.begin();j != ps.end();++j)
 		{
 			os << j->space_bdd << ";";
 		}

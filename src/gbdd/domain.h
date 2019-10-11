@@ -28,7 +28,11 @@
 //#include <sgi_ext.h>
 #include <assert.h>
 
+#include <vector>
+
 #include <unordered_map>
+#include <utility>
+
 namespace gbdd
 {
 
@@ -62,9 +66,9 @@ class RealQuant{
 			bool IsInt;
 			bool IsReal;
 			bool IsUnordered;
-			set<int> IValues;
-			set<double> FValues;
-			set<string> SValues;
+			std::set<int> IValues;
+			std::set<double> FValues;
+			std::set<string> SValues;
 			RealQuant()
 			{
 				IsInt=IsReal=IsUnordered=false;
@@ -249,7 +253,7 @@ Domain Domain::transform(_UnaryFunction op) const
 /// Tuple of domains used to type Relation
 class Domains
 {
-	vector<Domain> doms;
+	std::vector<Domain> doms;
 public:
 	Domains(unsigned int n = 0);
 	Domains(Domain d1);
@@ -273,7 +277,7 @@ public:
 	Domains cut_to_same_sizes(Domains ds) const;
 
 	/// Iterator
-	typedef vector<Domain>::const_iterator const_iterator;
+	typedef std::vector<Domain>::const_iterator const_iterator;
 
 /// Get iterator pointing to beginning
 /**

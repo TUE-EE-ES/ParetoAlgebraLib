@@ -116,7 +116,7 @@ namespace Pareto {
 		virtual inline unsigned size(void) {return ind.size();}
 	
 	protected:
-		vector<Conf*> ind;
+		std::vector<Conf*> ind;
 		IndexOrder order;
 		unsigned col;
 	};
@@ -157,7 +157,7 @@ namespace Pareto {
 		virtual Confset *constrain(Confset*, const Conf*);
 		virtual Confset *unite(const Confset*, const Confset*);
 		
-		virtual Iter *prodgen(vector<Confset*>);
+		virtual Iter *prodgen(std::vector<Confset*>);
 		virtual Iter *prodgen(Confset*, Confset*);
 		
 		virtual Confset *addDerived(Confset*, Value *(*)(Conf*, const void*), const void* = NULL);
@@ -176,7 +176,7 @@ namespace Pareto {
 	/// Product generator for explicit calculator
 	class ExplProdGen : public Iter {
 	public:
-		ExplProdGen(vector<Confset*> Clist);
+		ExplProdGen(std::vector<Confset*> Clist);
 		ExplProdGen(Confset *C0, Confset *C1);
 		virtual ~ExplProdGen(void);
 		virtual void init(void);
@@ -185,8 +185,8 @@ namespace Pareto {
 		virtual inline bool done(void) {return stop;}
 		
 	protected:
-		vector<Confset*> l;
-		vector<Iter*> itervec;
+		std::vector<Confset*> l;
+		std::vector<Iter*> itervec;
 		Conf *pconf;
 		bool stop;
 	};

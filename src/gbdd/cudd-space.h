@@ -34,6 +34,8 @@ extern "C" {
 #include <cudd.h>
 }
 
+#include <bdd.h>
+
 namespace gbdd
 {
 	/// Wrapper for the BuDDy implementation of BDDs
@@ -44,7 +46,7 @@ namespace gbdd
 		DdManager* manager;
 
 		void ensure_n_vars(unsigned int n_vars);
-		Var bdd_highest_var(Bdd p, unordered_set<Bdd>& cache);
+		Var bdd_highest_var(Bdd p, std::unordered_set<Bdd>& cache);
 		Bdd varpredicate_to_set(unsigned int n_vars, Space::VarPredicate& fn_var);
 	public:
 		CuddSpace();

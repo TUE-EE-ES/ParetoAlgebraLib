@@ -59,7 +59,7 @@ void Space::unlock_gc()
  *
  * @return Highest variable in BDD, or 0 if none
  */
-Space::Var Space::bdd_highest_var(Bdd p, unordered_set<Bdd>& cache)
+Space::Var Space::bdd_highest_var(Bdd p, std::unordered_set<Bdd>& cache)
 {
 	if (cache.find(p) != cache.end()) return 0;
 	cache.insert(p);

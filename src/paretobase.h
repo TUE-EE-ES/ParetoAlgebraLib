@@ -74,7 +74,7 @@ typedef enum signature_ {
 } Signature;
 
 typedef set<unsigned int> VisibleList;
-typedef vector<bool> Hidevec;	// obsolete! changed to VisibleList
+typedef std::vector<bool> Hidevec;	// obsolete! changed to VisibleList
 	
 /// Abstract class for a value (with default implementations)
 /**
@@ -119,7 +119,7 @@ public:
 	virtual Conf *copy(void) const = 0;
 
 	/// The signature representing the type of the configuration and its space
-	virtual vector<Signature> signature(void) const = 0;
+	virtual std::vector<Signature> signature(void) const = 0;
 
 	/// Append value \a v
 	/**
@@ -277,14 +277,14 @@ public:
 	virtual void clear(void) = 0;
 
 	/// Return the signature of the configuration set
-	virtual inline vector<Signature> signature(void) const {return sig;}
+	virtual inline std::vector<Signature> signature(void) const {return sig;}
 	
 	/// A reference to the Calculator that owns the confset
 	Calculator &calc;
 
 protected:
 	/// The signature of the configurations in the confset
-	vector<Signature> sig;
+	std::vector<Signature> sig;
 };
 
 
@@ -381,7 +381,7 @@ public:
 	virtual Confset *unite(const Confset *C, const Confset *D) = 0;
 
 	/// Return a Product generator for all sets in \a Clist
-	virtual Iter *prodgen(vector<Confset*> Clist) = 0;
+	virtual Iter *prodgen(std::vector<Confset*> Clist) = 0;
 	
 	/// Return a Product generator for \a C and \a D
 	virtual Iter *prodgen(Confset *C, Confset *D) = 0;
@@ -514,7 +514,7 @@ class ProdGen
 {
 public:
 	/// Constructor, creates and attaches to product generator for sets in \a Clist
-	ProdGen(vector<Confset*> Clist) :
+	ProdGen(std::vector<Confset*> Clist) :
 		prodgen(Clist[0]->calc.prodgen(Clist)) {}
 	
 	/// Constructor, creates and attaches to product generator for sets \a C and \a D

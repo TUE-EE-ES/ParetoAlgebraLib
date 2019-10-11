@@ -130,7 +130,7 @@ Space::Bdd CuddSpace::bdd_var_then_else(Var v, Bdd p_then, Bdd p_else)
 
 #define max(a, b) ((a > b) ? a : b)
 
-Space::Var CuddSpace::bdd_highest_var(Bdd p, unordered_set<Bdd>& cache)
+Space::Var CuddSpace::bdd_highest_var(Bdd p, std::unordered_set<Bdd>& cache)
 {
 	if (cache.find(p) != cache.end()) return 0;
 	cache.insert(p);

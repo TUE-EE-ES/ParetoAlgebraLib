@@ -419,7 +419,7 @@ public:
 /**
  * @return Hash value for BDD
  */
-	//unsigned long int hash(void) const;
+	unsigned long int hash(void) const;
 
 	friend ostream& operator<< (ostream& s, const Bdd& p);
 
@@ -536,7 +536,33 @@ static Bdd::FiniteVars operator*(const Bdd::FiniteVars& vs1, const Bdd::FiniteVa
 	return Bdd::FiniteVars(vs1.get_space(), vs1.get_domains() * vs2.get_domains());
 }
 
+
+// MG: adding hash functions to support unordered_sets s
+
+// Custom Hash Functor that will compute the hash on the bdd
+struct BddHash {
+public:
+	size_t operator()(const Bdd& b) const {
+		return b.hash();
+	}
+};
+
+// Custom comparator that compares the bdd objects
+struct BddEqual {
+public:
+	bool operator()(const Bdd& b1, const Bdd& b2) const {
+
+		return b1 == b2;
+	}
+};
+
+typedef std::unordered_set<Bdd, BddHash, BddEqual> SetOfBdd;
+
+
 }
+
+
+
 
 //DECL_NAMESPACE_SGI
 //{

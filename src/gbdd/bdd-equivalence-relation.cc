@@ -125,7 +125,7 @@ BddEquivalenceRelation::identity(Space* space,
 				      Bdd::vars_equal(space, domain1, domain2));
 }
 
-static void find_with_geq_var(Bdd p, Bdd::Var v, unordered_set<Bdd>& res)
+static void find_with_geq_var(Bdd p, Bdd::Var v, SetOfBdd& res)
 {
 	if (p.bdd_is_leaf())
 	{

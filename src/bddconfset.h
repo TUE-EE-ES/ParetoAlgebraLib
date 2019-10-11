@@ -73,7 +73,7 @@ namespace Pareto
 		BddConfset(quantities qs);
 
 		// Bddbolic Minimize
-		BddConfset Bddbolic_Minimize(Space* space, vector<BddConfset> Dominates,  Bdd::FiniteVars zs);
+		BddConfset Bddbolic_Minimize(Space* space, std::vector<BddConfset> Dominates,  Bdd::FiniteVars zs);
 
 		//Abstract quantity Q from BddConfsets
 		BddConfset Abstract(const quantity& Q);
@@ -107,14 +107,14 @@ namespace Pareto
 		Confset *conv_exp(void) const;
 
 		//Mnimization.
-		BddConfset minimise(vector<bool>);
-		BddConfset advanced_minimise(vector<bool>);
-		BddConfset *constrain(const BddConfset C, const BddConfset D, vector<unsigned int> R);
+		BddConfset minimise(std::vector<bool>);
+		BddConfset advanced_minimise(std::vector<bool>);
+		BddConfset *constrain(const BddConfset C, const BddConfset D, std::vector<unsigned int> R);
 		BddConfset* add_values(const BddConfset C, const BddConfset D);
-		BddConfset mmkp(vector<BddConfset> S,vector<BddConfset> V, vector<unsigned int> R);
+		BddConfset mmkp(std::vector<BddConfset> S,std::vector<BddConfset> V, std::vector<unsigned int> R);
 
 		//Mnimization.
-		BddConfset mmkp_minimise(vector<bool>);
+		BddConfset mmkp_minimise(std::vector<bool>);
 
 		BddConfset my_abstract(unsigned int );
 		BddConfset my_abstract(unsigned int,unsigned int );

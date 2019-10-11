@@ -33,7 +33,7 @@ public:
 	GenConf() : Conf() {}
 	virtual ~GenConf(void);
 	virtual Conf *copy(void) const;
-	virtual vector<Signature> signature(void) const;
+	virtual std::vector<Signature> signature(void) const;
 	virtual void append(Value*);
 	virtual void append(Conf*);
 	virtual Value *get(unsigned) const;
@@ -48,7 +48,7 @@ public:
 	virtual bool totalCompare(const Conf *c) const;
 	
 protected:
-	typedef vector<Value*> tgenconf;
+	typedef std::vector<Value*> tgenconf;
 	tgenconf conf;
 };
 
@@ -65,7 +65,7 @@ public:
 	FloatConf() : Conf() {}
 	virtual ~FloatConf(void);
 	virtual Conf *copy(void) const;
-	virtual vector<Signature> signature(void) const;
+	virtual std::vector<Signature> signature(void) const;
 	virtual void append(Value*);
 	virtual void append(double);
 	virtual void append(Conf*);
@@ -83,7 +83,7 @@ public:
 	virtual bool totalCompare(const Conf *c) const;
 	
 protected:
-	typedef vector<double> tFloatConf;
+	typedef std::vector<double> tFloatConf;
 	tFloatConf conf;
 };
 

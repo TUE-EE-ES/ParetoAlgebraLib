@@ -33,6 +33,7 @@
 #include <string>
 #include <assert.h>
 
+
 namespace gbdd
 {
 
@@ -142,7 +143,7 @@ private:
 		}
 	};
 
-	Var bdd_highest_var(Bdd p, unordered_set<Bdd>& cache);
+	Var bdd_highest_var(Bdd p, std::unordered_set<Bdd>& cache);
 public:
 	typedef BinaryFunction<bool, bool, bool> ProductFunction;
 	typedef UnaryFunction<bool, bool> UnaryProductFunction;
