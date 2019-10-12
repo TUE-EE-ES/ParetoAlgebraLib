@@ -34,7 +34,7 @@ namespace Pareto {
 	/// Order function for set objects
 	struct ltconf
 	{
-		bool operator()(const Conf *s1, const Conf *s2)
+		bool operator()(const Conf *s1, const Conf *s2) const
 		{
 			return s1->totalCompare(s2);
 		}

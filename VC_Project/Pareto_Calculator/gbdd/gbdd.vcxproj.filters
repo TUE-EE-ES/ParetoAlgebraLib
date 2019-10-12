@@ -91,7 +91,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="CUDD\Release\cudd.lib" />
     <Library Include="..\..\..\src\gbdd\win32\pthreadVSE2.lib" />
   </ItemGroup>
 </Project>

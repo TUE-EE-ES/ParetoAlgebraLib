@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pareto_Calculator", "Pareto_Calculator.vcxproj", "{4C0C11E8-194A-49CB-9FED-1C8EA35C76A9}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -9,11 +9,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pareto_Calculator", "Pareto
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gbdd", "gbdd\gbdd.vcxproj", "{C2C81349-0C62-4901-B3BF-28BE0EFF5B3D}"
-	ProjectSection(ProjectDependencies) = postProject
-		{0007BC93-E529-4B0D-B395-F824E3FBFA95} = {0007BC93-E529-4B0D-B395-F824E3FBFA95}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cudd", "gbdd\cudd\cudd.vcxproj", "{0007BC93-E529-4B0D-B395-F824E3FBFA95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,12 +24,11 @@ Global
 		{C2C81349-0C62-4901-B3BF-28BE0EFF5B3D}.Debug|Win32.Build.0 = Debug|Win32
 		{C2C81349-0C62-4901-B3BF-28BE0EFF5B3D}.Release|Win32.ActiveCfg = Release|Win32
 		{C2C81349-0C62-4901-B3BF-28BE0EFF5B3D}.Release|Win32.Build.0 = Release|Win32
-		{0007BC93-E529-4B0D-B395-F824E3FBFA95}.Debug|Win32.ActiveCfg = Debug|Win32
-		{0007BC93-E529-4B0D-B395-F824E3FBFA95}.Debug|Win32.Build.0 = Debug|Win32
-		{0007BC93-E529-4B0D-B395-F824E3FBFA95}.Release|Win32.ActiveCfg = Release|Win32
-		{0007BC93-E529-4B0D-B395-F824E3FBFA95}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E54C5444-3582-4784-83E5-E15A6DEF0F9A}
 	EndGlobalSection
 EndGlobal
