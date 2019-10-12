@@ -45,268 +45,262 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\cudd\cudd\cuddAddAbs.c">
+    <ClCompile Include="cudd\cudd\cuddAddAbs.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddAddApply.c">
+    <ClCompile Include="cudd\cudd\cuddAddApply.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddAddFind.c">
+    <ClCompile Include="cudd\cudd\cuddAddFind.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddAddInv.c">
+    <ClCompile Include="cudd\cudd\cuddAddInv.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddAddIte.c">
+    <ClCompile Include="cudd\cudd\cuddAddIte.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddAddNeg.c">
+    <ClCompile Include="cudd\cudd\cuddAddNeg.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddAddWalsh.c">
+    <ClCompile Include="cudd\cudd\cuddAddWalsh.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddAndAbs.c">
+    <ClCompile Include="cudd\cudd\cuddAndAbs.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddAnneal.c">
+    <ClCompile Include="cudd\cudd\cuddAnneal.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddApa.c">
+    <ClCompile Include="cudd\cudd\cuddApa.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddAPI.c">
+    <ClCompile Include="cudd\cudd\cuddAPI.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddApprox.c">
+    <ClCompile Include="cudd\cudd\cuddApprox.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddBddAbs.c">
+    <ClCompile Include="cudd\cudd\cuddBddAbs.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddBddCorr.c">
+    <ClCompile Include="cudd\cudd\cuddBddCorr.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddBddIte.c">
+    <ClCompile Include="cudd\cudd\cuddBddIte.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddBridge.c">
+    <ClCompile Include="cudd\cudd\cuddBridge.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddCache.c">
+    <ClCompile Include="cudd\cudd\cuddCache.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddCheck.c">
+    <ClCompile Include="cudd\cudd\cuddCheck.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddClip.c">
+    <ClCompile Include="cudd\cudd\cuddClip.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddCof.c">
+    <ClCompile Include="cudd\cudd\cuddCof.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddCompose.c">
+    <ClCompile Include="cudd\cudd\cuddCompose.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddDecomp.c">
+    <ClCompile Include="cudd\cudd\cuddDecomp.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddEssent.c">
+    <ClCompile Include="cudd\cudd\cuddEssent.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddExact.c">
+    <ClCompile Include="cudd\cudd\cuddExact.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddExport.c">
+    <ClCompile Include="cudd\cudd\cuddExport.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddGenCof.c">
+    <ClCompile Include="cudd\cudd\cuddGenCof.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddGenetic.c">
+    <ClCompile Include="cudd\cudd\cuddGenetic.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddGroup.c">
+    <ClCompile Include="cudd\cudd\cuddGroup.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddHarwell.c">
+    <ClCompile Include="cudd\cudd\cuddHarwell.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddInit.c">
+    <ClCompile Include="cudd\cudd\cuddInit.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddInteract.c">
+    <ClCompile Include="cudd\cudd\cuddInteract.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddLCache.c">
+    <ClCompile Include="cudd\cudd\cuddLCache.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddLevelQ.c">
+    <ClCompile Include="cudd\cudd\cuddLevelQ.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddLinear.c">
+    <ClCompile Include="cudd\cudd\cuddLinear.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddLiteral.c">
+    <ClCompile Include="cudd\cudd\cuddLiteral.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddMatMult.c">
+    <ClCompile Include="cudd\cudd\cuddMatMult.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddPriority.c">
+    <ClCompile Include="cudd\cudd\cuddPriority.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddRead.c">
+    <ClCompile Include="cudd\cudd\cuddRead.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddRef.c">
+    <ClCompile Include="cudd\cudd\cuddRef.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddReorder.c">
+    <ClCompile Include="cudd\cudd\cuddReorder.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddSat.c">
+    <ClCompile Include="cudd\cudd\cuddSat.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddSign.c">
+    <ClCompile Include="cudd\cudd\cuddSign.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddSolve.c">
+    <ClCompile Include="cudd\cudd\cuddSolve.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddSplit.c">
+    <ClCompile Include="cudd\cudd\cuddSplit.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddSubsetHB.c">
+    <ClCompile Include="cudd\cudd\cuddSubsetHB.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddSubsetSP.c">
+    <ClCompile Include="cudd\cudd\cuddSubsetSP.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddSymmetry.c">
+    <ClCompile Include="cudd\cudd\cuddSymmetry.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddTable.c">
+    <ClCompile Include="cudd\cudd\cuddTable.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddUtil.c">
+    <ClCompile Include="cudd\cudd\cuddUtil.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddWindow.c">
+    <ClCompile Include="cudd\cudd\cuddWindow.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddZddCount.c">
+    <ClCompile Include="cudd\cudd\cuddZddCount.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddZddFuncs.c">
+    <ClCompile Include="cudd\cudd\cuddZddFuncs.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddZddGroup.c">
+    <ClCompile Include="cudd\cudd\cuddZddGroup.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddZddIsop.c">
+    <ClCompile Include="cudd\cudd\cuddZddIsop.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddZddLin.c">
+    <ClCompile Include="cudd\cudd\cuddZddLin.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddZddMisc.c">
+    <ClCompile Include="cudd\cudd\cuddZddMisc.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddZddPort.c">
+    <ClCompile Include="cudd\cudd\cuddZddPort.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddZddReord.c">
+    <ClCompile Include="cudd\cudd\cuddZddReord.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddZddSetop.c">
+    <ClCompile Include="cudd\cudd\cuddZddSetop.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddZddSymm.c">
+    <ClCompile Include="cudd\cudd\cuddZddSymm.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\cuddZddUtil.c">
+    <ClCompile Include="cudd\cudd\cuddZddUtil.c">
       <Filter>Source Files\cudd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\cudd\testextra.c">
-      <Filter>Source Files\cudd</Filter>
+    <ClCompile Include="cudd\epd\epd.c">
+      <Filter>Source Files\epd</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\util\cpu_stats.c">
-      <Filter>Source Files\util</Filter>
+    <ClCompile Include="cudd\mtr\mtrBasic.c">
+      <Filter>Source Files\mtr</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\util\cpu_time.c">
-      <Filter>Source Files\util</Filter>
+    <ClCompile Include="cudd\mtr\mtrGroup.c">
+      <Filter>Source Files\mtr</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\util\cstringstream.c">
-      <Filter>Source Files\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\cudd\util\datalimit.c">
-      <Filter>Source Files\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\cudd\util\pathsearch.c">
-      <Filter>Source Files\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\cudd\util\pipefork.c">
-      <Filter>Source Files\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\cudd\util\prtime.c">
-      <Filter>Source Files\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\cudd\util\safe_mem.c">
-      <Filter>Source Files\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\cudd\util\strsav.c">
-      <Filter>Source Files\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\cudd\util\texpand.c">
-      <Filter>Source Files\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\cudd\util\ucbqsort.c">
-      <Filter>Source Files\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\cudd\st\st.c">
+    <ClCompile Include="cudd\st\st.c">
       <Filter>Source Files\st</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\mtr\mtrBasic.c">
-      <Filter>Source Files\mtr</Filter>
+    <ClCompile Include="cudd\util\cpu_stats.c">
+      <Filter>Source Files\util</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\mtr\mtrGroup.c">
-      <Filter>Source Files\mtr</Filter>
+    <ClCompile Include="cudd\util\cpu_time.c">
+      <Filter>Source Files\util</Filter>
     </ClCompile>
-    <ClCompile Include="..\cudd\epd\epd.c">
-      <Filter>Source Files\epd</Filter>
+    <ClCompile Include="cudd\util\cstringstream.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="cudd\util\datalimit.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="cudd\util\pathsearch.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="cudd\util\pipefork.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="cudd\util\prtime.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="cudd\util\safe_mem.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="cudd\util\strsav.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="cudd\util\texpand.c">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="cudd\util\ucbqsort.c">
+      <Filter>Source Files\util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="config.h">
+    <ClInclude Include="cudd\cudd\cudd.h">
       <Filter>Header Files\cudd</Filter>
     </ClInclude>
-    <ClInclude Include="..\cudd\cudd\cudd.h">
+    <ClInclude Include="cudd\cudd\cuddInt.h">
       <Filter>Header Files\cudd</Filter>
     </ClInclude>
-    <ClInclude Include="..\cudd\cudd\cuddInt.h">
-      <Filter>Header Files\cudd</Filter>
+    <ClInclude Include="cudd\epd\epd.h">
+      <Filter>Header Files\epd</Filter>
     </ClInclude>
-    <ClInclude Include="..\cudd\util\cstringstream.h">
-      <Filter>Header Files\util</Filter>
+    <ClInclude Include="cudd\epd\epdInt.h">
+      <Filter>Header Files\epd</Filter>
     </ClInclude>
-    <ClInclude Include="..\cudd\util\util.h">
-      <Filter>Header Files\util</Filter>
+    <ClInclude Include="cudd\mtr\mtrInt.h">
+      <Filter>Header Files\mtr</Filter>
     </ClInclude>
-    <ClInclude Include="..\cudd\st\st.h">
+    <ClInclude Include="cudd\mtr\mtr.h">
+      <Filter>Header Files\mtr</Filter>
+    </ClInclude>
+    <ClInclude Include="cudd\st\st.h">
       <Filter>Header Files\st</Filter>
     </ClInclude>
-    <ClInclude Include="..\cudd\mtr\mtr.h">
-      <Filter>Header Files\mtr</Filter>
+    <ClInclude Include="cudd\util\cstringstream.h">
+      <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\cudd\mtr\mtrInt.h">
-      <Filter>Header Files\mtr</Filter>
-    </ClInclude>
-    <ClInclude Include="..\cudd\epd\epd.h">
-      <Filter>Header Files\epd</Filter>
-    </ClInclude>
-    <ClInclude Include="..\cudd\epd\epdInt.h">
-      <Filter>Header Files\epd</Filter>
+    <ClInclude Include="cudd\util\util.h">
+      <Filter>Header Files\util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
