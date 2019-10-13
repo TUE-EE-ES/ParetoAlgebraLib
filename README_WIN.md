@@ -14,13 +14,16 @@ at <http://www.es.ele.tue.nl/pareto>
 
 How do I use / install it?
 
-To do: combine two solutions into one.
+### Under Windows / Visual studio
 
 1. clone cudd version 3.0.0 from git hub in the folder ParetoAlgebraLib with the command.
    `git clone --branch cudd-3.0.0 https://github.com/ivmai/cudd.git`
    You can also download the zip archive and unpack it.
-2. Open the vs solution and build..
+2. Open the vs solution VisualStudio/Pareto_Calculator.sln and build it
 
+### Under Linux / gcc
+
+There are some cmake files...
 
 ------------------------------------------------------------------
 
