@@ -11,19 +11,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{4C0C11E8-194A-49CB-9FED-1C8EA35C76A9}</ProjectGuid>
-    <RootNamespace>Pareto_Calculator</RootNamespace>
+    <ProjectGuid>{C2C81349-0C62-4901-B3BF-28BE0EFF5B3D}</ProjectGuid>
+    <RootNamespace>gbdd</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -42,74 +43,66 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
-    <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(Configuration)\gbdd\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
-    <LinkIncremental>false</LinkIncremental>
+    <IntDir>$(Configuration)\gbdd\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\src\gbdd;..\..\src\gbdd\win32;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;HAVE_STRUCT_TIMESPEC;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir)..\src\gbdd\;$(SolutionDir)..\cudd\cudd\;$(SolutionDir)..\src\gbdd\win32\</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;HAVE_STRUCT_TIMESPEC;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>
+      </MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
-    <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Console</SubSystem>
-      <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration);$(SolutionDir)..\..\Cudd_VS\$(Configuration)\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gbdd.lib;cudd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\src\gbdd\win32;..\..\src\gbdd;..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;HAVE_STRUCT_TIMESPEC;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir)..\src\gbdd\;$(SolutionDir)..\cudd\cudd\;$(SolutionDir)..\src\gbdd\win32\</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;HAVE_STRUCT_TIMESPEC;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
-    <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Console</SubSystem>
-      <OptimizeReferences>true</OptimizeReferences>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration);$(SolutionDir)..\..\Cudd_VS\$(Configuration)\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gbdd.lib;cudd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\examples\betsy.cc" />
-    <ClCompile Include="..\..\src\bddconfset.cc" />
-    <ClCompile Include="..\..\src\conf.cc" />
-    <ClCompile Include="..\..\src\explicit.cc" />
-    <ClCompile Include="..\..\src\paretobase.cc" />
-    <ClCompile Include="..\..\src\quantity.cc" />
-    <ClCompile Include="..\..\src\symbolic.cc" />
+    <ClInclude Include="..\src\gbdd\bdd-equivalence-relation.h" />
+    <ClInclude Include="..\src\gbdd\bdd-relation.h" />
+    <ClInclude Include="..\src\gbdd\bdd.h" />
+    <ClInclude Include="..\src\gbdd\bool-constraint.h" />
+    <ClInclude Include="..\src\gbdd\cudd-space.h" />
+    <ClInclude Include="..\src\gbdd\domain.h" />
+    <ClInclude Include="..\src\gbdd\gbdd.h" />
+    <ClInclude Include="..\src\gbdd\mutex-space.h" />
+    <ClInclude Include="..\src\gbdd\relation-compat.h" />
+    <ClInclude Include="..\src\gbdd\sgi_ext.h" />
+    <ClInclude Include="..\src\gbdd\space.h" />
+    <ClInclude Include="..\src\gbdd\structure-binary-relation.h" />
+    <ClInclude Include="..\src\gbdd\structure-constraint.h" />
+    <ClInclude Include="..\src\gbdd\structure-relation.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\bddconfset.h" />
-    <ClInclude Include="..\..\src\conf.h" />
-    <ClInclude Include="..\..\src\explicit.h" />
-    <ClInclude Include="..\..\src\pareto.h" />
-    <ClInclude Include="..\..\src\paretobase.h" />
-    <ClInclude Include="..\..\src\quantity.h" />
-    <ClInclude Include="..\..\src\symbolic.h" />
-    <ClInclude Include="..\..\src\value.h" />
+    <ClCompile Include="..\src\gbdd\bdd-equivalence-relation.cc" />
+    <ClCompile Include="..\src\gbdd\bdd-relation.cc" />
+    <ClCompile Include="..\src\gbdd\bdd.cc" />
+    <ClCompile Include="..\src\gbdd\bool-constraint.cc" />
+    <ClCompile Include="..\src\gbdd\cudd-space.cc" />
+    <ClCompile Include="..\src\gbdd\domain.cc" />
+    <ClCompile Include="..\src\gbdd\mutex-space.cc" />
+    <ClCompile Include="..\src\gbdd\space.cc" />
+    <ClCompile Include="..\src\gbdd\structure-constraint.cc" />
+    <ClCompile Include="..\src\gbdd\structure-relation.cc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
