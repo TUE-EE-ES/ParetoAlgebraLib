@@ -32,15 +32,15 @@ using namespace gbdd;
 
 namespace Pareto
 {
-	
-	class gbdd::BddSet;
-	class gbdd::BddRelation;
+
+	//class gbdd::BddSet;
+	//class gbdd::BddRelation;
 	class BddConfset;
 	class quantity;
 
 	//Space *space = Space::create_default();
 
-	class SymConfset : public Confset 
+	class SymConfset : public Confset
 	{
 	public:
 
