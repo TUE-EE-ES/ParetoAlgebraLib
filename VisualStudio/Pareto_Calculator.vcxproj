@@ -56,7 +56,8 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(SoluionDir)..\src\;$(SoluionDir)..\src\gbdd\;$(SoluionDir)..\src\gbdd\win32\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;HAVE_STRUCT_TIMESPEC;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
+      <MinimalRebuild>
+      </MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader />

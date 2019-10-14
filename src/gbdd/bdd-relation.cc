@@ -41,6 +41,7 @@ const Bdd& BddRelation::get_bdd() const
 	{
 //		cout << typeid(get_bdd_based()).name() << endl;
 		assert(false);
+		return *new Bdd();
 	}
 }
 

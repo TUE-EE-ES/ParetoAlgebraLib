@@ -138,7 +138,7 @@ Space::Var CuddSpace::bdd_highest_var(Bdd p, std::unordered_set<Bdd>& cache)
 	Bdd p_then = bdd_then(p);
 	Bdd p_else = bdd_else(p);
 
-	switch(bdd_is_leaf(p_then) | (bdd_is_leaf(p_else) << 1))
+	switch(((int)bdd_is_leaf(p_then)) | ((int)(bdd_is_leaf(p_else)) << 1))
 	{
 	case 0:
 	{
@@ -161,6 +161,7 @@ Space::Var CuddSpace::bdd_highest_var(Bdd p, std::unordered_set<Bdd>& cache)
 	}
 	
 	assert(false);
+	return 0L;
 }
 
 Space::Var CuddSpace::bdd_highest_var(Bdd p)

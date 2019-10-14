@@ -73,7 +73,7 @@ namespace Pareto
 		if(conv)
 		{
 			char ex[128];
-			sprintf(ex, "Dynamic addition in symbolic version is not supported.",
+			sprintf(ex, "Dynamic addition in symbolic version is not supported. %s",
 					c->str().data());
 			throw Exception(ex);
 		}
@@ -238,7 +238,7 @@ namespace Pareto
 		else
 		{
 			char ex[128];
-			sprintf(ex, "Dynamic addition in symbolic version is not supported.",
+			sprintf(ex, "Dynamic addition in symbolic version is not supported. %s",
 					c->str().data());
 			throw Exception(ex);
 		}

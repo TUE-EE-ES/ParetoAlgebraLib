@@ -642,7 +642,7 @@ namespace Pareto
 						for(unsigned int i =0 ; i<(*is[0]);++i)
 							++ir;
 						char buf[16];
-						sprintf(buf, "%.3f", *ir);
+						sprintf(buf, "%.3f", (double)(*ir));
 						s += "(" + (string)buf;}
 
 					if(r.get_domains()[0].RealVal.IsUnordered){
@@ -675,7 +675,7 @@ namespace Pareto
 						for(unsigned int i =0 ; i<(**j);++i)
 							++ir;
 						char buf[16];
-						sprintf(buf, "%.3f", *ir);
+						sprintf(buf, "%.3f", (double)(*ir));
 						s += "," + (string)buf;}
 
 					if(r.get_domains()[count].RealVal.IsUnordered){
