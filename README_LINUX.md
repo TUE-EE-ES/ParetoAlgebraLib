@@ -18,13 +18,23 @@ As such this library is available only under the GPL license.
 
 How do I use / install it?
 
-### Under Windows / Visual studio
+### Under Linux / gcc
 
 1. clone cudd version 3.0.0 from git hub in the folder ParetoAlgebraLib with the command.
    `git clone --branch cudd-3.0.0 https://github.com/ivmai/cudd.git`
    You can also download the zip archive and unpack it.
    The CUDD `README` file, e.g., should then reside at `ParetoAlgebraLib/cudd/README`.
-2. Open the vs solution `VisualStudio/Pareto_Calculator.sln` and build it in the desired configuration (`Debug` or `Release`). Static libraries and executables are built in the `ParetoAlgebraLib\VisualStudio\Debug` or `ParetoAlgebraLib\VisualStudio\Release` folder.
+2. In the cudd directory type the following commands
+   - `aclocal`,
+   - `automake`
+   - `./configure` and then
+   - `make`
+
+   It should have produce the static library `ParetoCalculatorLib/cudd/cudd/.libs/libcudd.a`
+3. In the main `ParetoCalculatorLib` directory type
+   - `cmake .` and then type
+   - `make`
+
 
 ### Under Linux / gcc
 
