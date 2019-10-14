@@ -6,6 +6,10 @@ The Pareto Calculator is a library that implements Pareto Algebra [1].
 You can find more information about Pareto Algebra and the calculator
 at <http://www.es.ele.tue.nl/pareto>
 
+It uses the CUDD library of Fabio Somenzi <link> (BSD license) and the GBDD library of Marcus Nilsson <link> (GPL license)
+
+As such this library is available only under the GPL license.
+
 ------------------------------------------------------------------
 
 
