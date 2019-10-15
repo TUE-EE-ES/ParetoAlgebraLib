@@ -24,7 +24,7 @@ Building the library requires that common build tools, including `automake` and 
 
 1. If you haven't already done so, clone the git
 
-   `git clone https://github.com/TUE-FitOpTiVis/ParetoCalculatorLib.git`
+   `git clone https://github.com/TUE-FitOpTiVis/ParetoAlgebraLib.git`
 
 2. clone cudd version 3.0.0 from git hub in the folder ParetoAlgebraLib with the command.
 
@@ -55,8 +55,9 @@ TBD.
 Is there any documentation for the Pareto Calculator?
 
 There is currently no documentation for the library.
+However, doxygen documentation is generate. It can be found after the project has been built in the directory `doc/codedoc/` as `index.html`
 
-Documentation for the library can be found at http://www.es.ele.tue.nl/pareto.
+Additional information  can be found at http://www.es.ele.tue.nl/pareto.
 
 ------------------------------------------------------------------
 
