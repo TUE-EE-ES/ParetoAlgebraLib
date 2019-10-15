@@ -16,20 +16,21 @@ add_executable(Test
 	test.cc
 )
 
-#link_directories(../gbdd/)
+find_library(GBDD_DIR GBDD HINT ../src/gbdd)
+link_directories(${GBDD_DIR} ../src ../cudd/cudd/.libs)
 target_link_libraries(Betsy
-	"/home/mgeilen/temp/gbdd/libGBDD.a"
-	"/home/mgeilen/temp/cudd/cudd/.libs/libcudd.a"
-	"/home/mgeilen/temp/calculator/libParetoCalculator.a"
+	"libGBDD.a"
+	"libcudd.a"
+	"libParetoCalculator.a"
 )
 target_link_libraries(ProdConsTest
-	"/home/mgeilen/temp/gbdd/libGBDD.a"
-	"/home/mgeilen/temp/cudd/cudd/.libs/libcudd.a"
-	"/home/mgeilen/temp/calculator/libParetoCalculator.a"
+	"../gbdd/libGBDD.a"
+	"../cudd/cudd/.libs/libcudd.a"
+	"../src/libParetoCalculator.a"
 )
 target_link_libraries(Test
-	"/home/mgeilen/temp/gbdd/libGBDD.a"
-	"/home/mgeilen/temp/cudd/cudd/.libs/libcudd.a"
-	"/home/mgeilen/temp/calculator/libParetoCalculator.a"
+	"../gbdd/libGBDD.a"
+	"../cudd/cudd/.libs/libcudd.a"
+	"../src/libParetoCalculator.a"
 )
 

@@ -40,7 +40,7 @@ namespace Pareto
 
 	//Space *space = Space::create_default();
 
-	class SymConfset : public Confset 
+	class SymConfset : public Confset
 	{
 	public:
 
