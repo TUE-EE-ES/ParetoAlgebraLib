@@ -35,12 +35,8 @@ How do I use / install it?
    - `cmake .` and then type
    - `make`
 
+   The the Pareto Calculator static library has been built in  `src/libParetoCalculator.a` and also three example applications in `examples`.
 
-### Under Linux / gcc
-
-There are some cmake files...
-
-TBD
 
 ### Using the library
 

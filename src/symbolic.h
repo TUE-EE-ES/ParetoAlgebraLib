@@ -33,8 +33,8 @@ using namespace gbdd;
 namespace Pareto
 {
 	
-	class gbdd::BddSet;
-	class gbdd::BddRelation;
+//	class gbdd::BddSet;
+//	class gbdd::BddRelation;
 	class BddConfset;
 	class quantity;
 
