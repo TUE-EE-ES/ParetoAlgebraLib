@@ -16,21 +16,19 @@ add_executable(Test
 	test.cc
 )
 
-find_library(GBDD_DIR GBDD HINT ../src/gbdd)
-link_directories(${GBDD_DIR} ../src ../cudd/cudd/.libs)
 target_link_libraries(Betsy
-	"libGBDD.a"
-	"libcudd.a"
-	"libParetoCalculator.a"
+	GBDD
+	ParetoCalculator
+	${CMAKE_SOURCE_DIR}/cudd/cudd/.libs/libcudd.a
 )
 target_link_libraries(ProdConsTest
-	"../gbdd/libGBDD.a"
-	"../cudd/cudd/.libs/libcudd.a"
-	"../src/libParetoCalculator.a"
+	GBDD
+	ParetoCalculator
+	${CMAKE_SOURCE_DIR}/cudd/cudd/.libs/libcudd.a
 )
 target_link_libraries(Test
-	"../gbdd/libGBDD.a"
-	"../cudd/cudd/.libs/libcudd.a"
-	"../src/libParetoCalculator.a"
+	GBDD
+	ParetoCalculator
+	${CMAKE_SOURCE_DIR}/cudd/cudd/.libs/libcudd.a
 )
 

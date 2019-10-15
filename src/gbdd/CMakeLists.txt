@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 
 set(CMAKE_C_STANDARD 11)
 
-include_directories(. ../cudd/cudd)
+include_directories(. ../../cudd/cudd)
 
 ADD_LIBRARY(GBDD STATIC
 	bdd.cc
