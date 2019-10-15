@@ -62,5 +62,10 @@ Marc Geilen <m.c.w.geilen@tue.nl>
 
 ## References
 
-[1] M.C.W. Geilen, T. Basten, B.D. Theelen, R.H.J.M. Otten. An Algebra of Pareto Points.
-   Fundamenta Informaticae. 78(1):35-74, 2007. (Special issue with best papers of ACSD 2005.)  IOS Press.
+[1] M.C.W. Geilen, T. Basten, B.D. Theelen, R.H.J.M. Otten. [An Algebra of Pareto Points.](https://dl.acm.org/citation.cfm?id=1366010)
+   Fundamenta Informaticae. 78(1):35-74, 2007. (Special issue with best papers of ACSD 2005.) IOS Press.
+
+[2] M.C.W. Geilen, T. Basten. [A Calculator for Pareto Points](https://ieeexplore.ieee.org/document/4211810). in Proceedings of the 10th Design, Automation and Test in Europe Conference and Exhibition (DATE 2007) 16-20 April 2007, Nice, France. Institute of Electrical and Electronics Engineers, Piscataway, New Jersey, pp. 285-291, DOI: 10.1109/DATE.2007.364605
+
+
+[2] H. Shojaei, T. Basten, M.C.W. Geilen, P. Stanley-Marbell, [SPaC: A symbolic Pareto Calculator](https://dl.acm.org/citation.cfm?id=1450176). in Proceedings of the International Conference on Hardware-Software Codesign and System Synthesis, CODES+ISSS 2008. Association for Computing Machinery, LNCS l., pp. 179-184.
