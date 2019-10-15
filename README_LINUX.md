@@ -43,8 +43,7 @@ Building the library requires that common build tools, including `automake` and 
    - `cmake .` and then type
    - `make`
 
-
-
+   The the Pareto Calculator static library has been built in  `src/libParetoCalculator.a` and also three example applications in `examples`.
 
 ### Using the library
 

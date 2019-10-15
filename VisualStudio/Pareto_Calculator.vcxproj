@@ -95,6 +95,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\bddconfset.h" />
     <ClInclude Include="..\src\conf.h" />
     <ClInclude Include="..\src\explicit.h" />
     <ClInclude Include="..\src\pareto.h" />

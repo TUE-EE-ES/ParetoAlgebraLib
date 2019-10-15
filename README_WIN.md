@@ -26,11 +26,6 @@ How do I use / install it?
    The CUDD `README` file, e.g., should then reside at `ParetoAlgebraLib/cudd/README`.
 2. Open the vs solution `VisualStudio/Pareto_Calculator.sln` and build it in the desired configuration (`Debug` or `Release`). Static libraries and executables are built in the `ParetoAlgebraLib\VisualStudio\Debug` or `ParetoAlgebraLib\VisualStudio\Release` folder.
 
-### Under Linux / gcc
-
-There are some cmake files...
-
-TBD
 
 ### Using the library
 
