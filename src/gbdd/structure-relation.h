@@ -52,12 +52,12 @@ implemented with existing methods in this class.
  * The structure object
  *
  */
-		auto_ptr<StructureConstraint> bb;
+		unique_ptr<StructureConstraint> bb;
 /**
  * Type
  *
  */
-		auto_ptr<Domains> domains;
+		unique_ptr<Domains> domains;
 		static StructureConstraint* copy_bb_from_relation(const StructureRelation& r);
 	protected:
 		void reset(const Domains& ds, const StructureConstraint& bb);

@@ -15,6 +15,4 @@ add_library(ParetoCalculator STATIC
 	symbolic.cc
 )
 
-#link_directories(../gbdd/)
-#target_link_libraries(ParetoCalculator "/home/mgeilen/temp/gbdd/libGBDD.a" "/home/mgeilen/temp/cudd/cudd/.libs/libcudd.a")
 
