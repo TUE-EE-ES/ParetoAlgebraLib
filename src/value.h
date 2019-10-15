@@ -33,7 +33,7 @@ namespace Pareto {
 	public:
 		FloatValue(double val) : val_(val) {}
 		virtual Value *copy() const {return new FloatValue(val_);}
-		virtual Signature signature(void) {return QFLOAT;}
+		virtual Signature signature(void) {return signature_::QFLOAT;}
 		virtual bool equals(const Value *v) const {
 			return val_ == ((FloatValue*) v)->val_;
 		}
@@ -53,7 +53,7 @@ namespace Pareto {
 		
 	protected:
 		FloatValue() {}
-		double val_;
+		double val_ = 0.0;
 	};
 
 	/// Unordered real value
@@ -61,7 +61,7 @@ namespace Pareto {
 	public:
 		UnorderedFloatValue(double val) {val_ = val;}
 		virtual Value *copy() const {return new UnorderedFloatValue(val_);}
-		virtual Signature signature(void) {return QUFLOAT;}
+		virtual Signature signature(void) {return signature_::QUFLOAT;}
 		virtual bool equals(const Value *v) const {
 			return val_ == ((UnorderedFloatValue*) v)->val_;
 		}
@@ -78,7 +78,7 @@ namespace Pareto {
 	public:
 		IntegerValue(int val) : val_(val) {}
 		virtual Value *copy() const {return new IntegerValue(val_);}
-		virtual Signature signature(void) {return QINT;}
+		virtual Signature signature(void) {return signature_::QINT;}
 		virtual bool equals(const Value *val) const {
 			return val_ == ((IntegerValue*) val)->val_;
 		}
@@ -99,7 +99,7 @@ namespace Pareto {
 		
 	protected:
 		IntegerValue() {}
-		int val_;
+		int val_ = 0;
 	};
 		
 	/// Unordered integer value
@@ -107,7 +107,7 @@ namespace Pareto {
 	public:
 		UnorderedIntegerValue(int val) {val_ = val;}
 		virtual Value *copy() const {return new UnorderedIntegerValue(val_);}
-		virtual Signature signature(void) {return QUINT;}
+		virtual Signature signature(void) {return signature_::QUINT;}
 		virtual bool equals(const Value *v) const {
 			return val_ == ((UnorderedIntegerValue*) v)->val_;
 		}
@@ -127,7 +127,7 @@ namespace Pareto {
 	public:
 		SymValue(quantity qu, double val) : v_(val), q(qu) {}
 		virtual Value *copy() const {return new SymValue(q, v_);}
-		virtual Signature signature(void) {return QFLOAT;}
+		virtual Signature signature(void) {return signature_::QFLOAT;}
 		virtual bool equals(const SymValue *val) const {return (v_ == val->v_ );}
 		virtual bool dominates(const SymValue *val) const {return v_ <= val->v_;}
 		

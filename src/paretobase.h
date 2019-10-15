@@ -66,7 +66,7 @@ class Calculator;
 class Iter;
 
 /// The types of quantities and configurations
-typedef enum signature_ {
+typedef enum class signature_ {
 	QUNDEFINED,
 	QFLOAT,
 	QUFLOAT,
@@ -93,7 +93,7 @@ public:
 	virtual Value *copy(void) const {return new Value(*this);}
 
 	/// The signature representing the quantity type
-	virtual Signature signature(void) {return QUNDEFINED;}
+	virtual Signature signature(void) {return signature_::QUNDEFINED;}
 
 	/// Checks whether this value equals the given one
 	virtual bool equals(const Value *v) const {return false;}

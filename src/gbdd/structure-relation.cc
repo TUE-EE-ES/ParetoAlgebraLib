@@ -170,7 +170,7 @@ StructureRelation::StructureRelation(const Domains& ds, const StructureRelation&
 	}
 
 	this->domains.reset(new Domains(new_domains));
-	this->bb.reset(auto_ptr<StructureConstraint>(r.get_bdd_based().ptr_rename(old_to_temp))->ptr_rename(temp_to_new));
+	this->bb.reset(unique_ptr<StructureConstraint>(r.get_bdd_based().ptr_rename(old_to_temp))->ptr_rename(temp_to_new));
 
 	// Check if some domain were cut and extend it otherwise
 
@@ -297,7 +297,7 @@ StructureRelation::extend_domain(unsigned int domain_index, const Domain& to, bo
 		++to_i;
 	}
 
-	auto_ptr<StructureConstraint> new_rel(get_bdd_based().ptr_clone());
+	unique_ptr<StructureConstraint> new_rel(get_bdd_based().ptr_clone());
 
 	while(to_i != to.end())
 	{
@@ -345,7 +345,7 @@ StructureRelation StructureRelation::reduce_domain(unsigned int domain_index,
 		++from_i;
 	}
 
-	auto_ptr<StructureConstraint> new_rel(get_bdd_based().ptr_project(remaining));
+	unique_ptr<StructureConstraint> new_rel(get_bdd_based().ptr_project(remaining));
 
 	Domains new_domains = get_domains();
 	new_domains[domain_index] = to;
@@ -438,8 +438,8 @@ StructureRelation StructureRelation::compose(unsigned int compose_domain_index,
 	Domains doms_result = escaped_rel.get_domains();
 	doms_result[compose_domain_index] = dom_im;
 
-	auto_ptr<StructureConstraint> combined (escaped_rel.get_bdd_based().ptr_product(escaped_compose_rel.get_bdd_based(), StructureConstraint::fn_and));
-	auto_ptr<StructureConstraint> projected (combined->ptr_project(dom_range));
+	unique_ptr<StructureConstraint> combined (escaped_rel.get_bdd_based().ptr_product(escaped_compose_rel.get_bdd_based(), StructureConstraint::fn_and));
+	unique_ptr<StructureConstraint> projected (combined->ptr_project(dom_range));
 
 	return StructureRelation(doms_result, *projected);
 }
@@ -468,7 +468,7 @@ StructureRelation StructureRelation::cross_product(const Domains& domains,
 
 	StructureSet first_set = StructureSet(domains[0], contents[0]);
 
-	auto_ptr<StructureConstraint> new_rel(first_set.get_bdd_based().ptr_clone());
+	unique_ptr<StructureConstraint> new_rel(first_set.get_bdd_based().ptr_clone());
 
 	++i;
 	++domains_i;
@@ -477,10 +477,10 @@ StructureRelation StructureRelation::cross_product(const Domains& domains,
 	{
 		assert(domains_i != domains.end());
 
-		auto_ptr<StructureConstraint> product(new_rel->ptr_product(StructureSet(*domains_i, *i).get_bdd_based(),
+		unique_ptr<StructureConstraint> product(new_rel->ptr_product(StructureSet(*domains_i, *i).get_bdd_based(),
 								StructureConstraint::fn_and));
 
-		new_rel = product;
+		new_rel = std::move(product);
 
 		++i;
 		++domains_i;
@@ -590,7 +590,7 @@ StructureRelation& StructureRelation::operator-=(const StructureRelation& rel2)
 
 StructureRelation StructureRelation::operator!() const
 {
-	auto_ptr<StructureConstraint> res(get_bdd_based().ptr_negate());
+	unique_ptr<StructureConstraint> res(get_bdd_based().ptr_negate());
 	return StructureRelation(get_domains(), *res);
 }
 
@@ -635,7 +635,7 @@ StructureRelation::product(const StructureRelation& r2, bool (*fn)(bool v1, bool
 	StructureRelation renamed_r1(res_domains, r1);
 	StructureRelation renamed_r2(res_domains, r2);
 
-	auto_ptr<StructureConstraint> res(renamed_r1.get_bdd_based().ptr_product(renamed_r2.get_bdd_based(), fn));
+	unique_ptr<StructureConstraint> res(renamed_r1.get_bdd_based().ptr_product(renamed_r2.get_bdd_based(), fn));
 
 	return StructureRelation(res_domains, *res);
 }
@@ -672,7 +672,7 @@ StructureSet StructureRelation::project_on(unsigned int domain_index) const
 		i++;
 	}
 
-	auto_ptr<StructureConstraint> res(get_bdd_based().ptr_project(dom_project));
+	unique_ptr<StructureConstraint> res(get_bdd_based().ptr_project(dom_project));
 
 	return StructureSet(get_domain(domain_index), *res);
 }
@@ -711,7 +711,7 @@ StructureRelation StructureRelation::project(unsigned int domain_index) const
 		i++;
 	}
 
-	auto_ptr<StructureConstraint> res(get_bdd_based().ptr_project(get_domain(domain_index)));
+	unique_ptr<StructureConstraint> res(get_bdd_based().ptr_project(get_domain(domain_index)));
 
 	return StructureRelation(get_domains(), *res);
 }
@@ -730,7 +730,7 @@ StructureRelation StructureRelation::restrict(unsigned int domain_index, const S
 {
 	StructureSet adapted(get_domain(domain_index), to);
 
-	auto_ptr<StructureConstraint> res(adapted.get_bdd_based().ptr_product(get_bdd_based(), StructureConstraint::fn_and));
+	unique_ptr<StructureConstraint> res(adapted.get_bdd_based().ptr_product(get_bdd_based(), StructureConstraint::fn_and));
 
 	return StructureRelation(get_domains(), *res);
 }

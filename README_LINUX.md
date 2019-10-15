@@ -54,6 +54,8 @@ TBD.
 
 Is there any documentation for the Pareto Calculator?
 
+There is currently no documentation for the library.
+
 Documentation for the library can be found at http://www.es.ele.tue.nl/pareto.
 
 ------------------------------------------------------------------

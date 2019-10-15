@@ -26,8 +26,8 @@
 namespace gbdd
 {
 
-MutexSpace::MutexSpace(auto_ptr<Space> space):
-	space(space)
+MutexSpace::MutexSpace(unique_ptr<Space> space):
+	space(std::move(space)), locking_thread(), locks()
 {
 	pthread_mutex_init(&space_mutex, NULL);
 	pthread_mutex_init(&locks_mutex, NULL);

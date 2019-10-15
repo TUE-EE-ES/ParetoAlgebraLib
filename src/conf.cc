@@ -42,7 +42,7 @@ namespace Pareto {
 	vector<Signature> GenConf::signature(void) const
 	{
 		vector<Signature> s;
-		s.push_back(CGEN);
+		s.push_back(signature_::CGEN);
 		for (unsigned i = 0; i < size(); i++)
 			s.push_back(conf[i]->signature());
 		return s;
@@ -165,16 +165,16 @@ namespace Pareto {
 	vector<Signature> FloatConf::signature(void) const
 	{
 		vector<Signature> s;
-		s.push_back(CFLOAT);
+		s.push_back(signature_::CFLOAT);
 		for (unsigned i = 0; i < size(); i++)
-			s.push_back(QFLOAT);
+			s.push_back(signature_::QFLOAT);
 		return s;
 	}
 
 	void FloatConf::append(Value *v)
 	{
 		FloatValue *vr = dynamic_cast<FloatValue*>(v);
-		if (vr && vr->signature() == QFLOAT) {
+		if (vr && vr->signature() == signature_::QFLOAT) {
 			conf.push_back(vr->getFloat());
 			delete vr;
 		}
@@ -190,7 +190,7 @@ namespace Pareto {
 	void FloatConf::append(Conf *c)
 	{
 		const FloatConf *cr = dynamic_cast<const FloatConf*>(c);
-		if (cr && cr->signature()[0] == CFLOAT)
+		if (cr && cr->signature()[0] == signature_::CFLOAT)
 			append(cr);
 		else
 			throw Exception("Can only append a FloatConf to a FloatConf.");

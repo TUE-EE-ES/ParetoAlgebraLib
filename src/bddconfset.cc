@@ -284,12 +284,12 @@ namespace Pareto
 		return rb;
 	}
 
-	auto_ptr<Bdd>  BddConfset::get_dominance(const Domain& d0, const Domain& d1, bool gl, bool disjoined)
+	unique_ptr<Bdd>  BddConfset::get_dominance(const Domain& d0, const Domain& d1, bool gl, bool disjoined)
 	{
 //		unsigned int n = d0.size();
 		Domain vs1 = d0;
 		Domain vs2 = d1;
-		auto_ptr<Bdd> r(new Bdd(Bdd::vars_equal(get_space(),vs1,vs2)));;
+		unique_ptr<Bdd> r(new Bdd(Bdd::vars_equal(get_space(),vs1,vs2)));;
 		if(d0.RealVal.IsUnordered)
 			return r;
 		vector<Space::Var> vvs1;
@@ -300,32 +300,32 @@ namespace Pareto
 			vvs2.push_back(*i1);
 
 
-		auto_ptr<Bdd> p(new Bdd(get_space(), false));
+		unique_ptr<Bdd> p(new Bdd(get_space(), false));
 
 		for(int i=(vvs1.size()-1); 0<=i; --i)
 		{
-			auto_ptr<Bdd> q(new Bdd(get_space(), true));
+			unique_ptr<Bdd> q(new Bdd(get_space(), true));
 			for(int j=(vvs1.size()-1); i<j; --j)
 			{
-				auto_ptr<Bdd> qt(new Bdd(Bdd::var_equal(get_space(), vvs1[j], vvs2[j])));
-				auto_ptr<Bdd> q1(q->ptr_product(*qt, StructureConstraint::fn_and));
-				q =q1;
+				unique_ptr<Bdd> qt(new Bdd(Bdd::var_equal(get_space(), vvs1[j], vvs2[j])));
+				unique_ptr<Bdd> q1(q->ptr_product(*qt, StructureConstraint::fn_and));
+				q = std::move(q1);
 			}
 			if(gl)
 			{
-				auto_ptr<Bdd> q1(q->ptr_product(Bdd::var_true(get_space(), vvs1[i]) & Bdd::var_false(get_space(), vvs2[i]),
+				unique_ptr<Bdd> q1(q->ptr_product(Bdd::var_true(get_space(), vvs1[i]) & Bdd::var_false(get_space(), vvs2[i]),
 					StructureConstraint::fn_and));
-				q =q1;
+				q = std::move(q1);
 
 			}
 			else
 			{
-				auto_ptr<Bdd> q1(q->ptr_product(Bdd::var_false(get_space(), vvs1[i]) & Bdd::var_true(get_space(), vvs2[i]),
+				unique_ptr<Bdd> q1(q->ptr_product(Bdd::var_false(get_space(), vvs1[i]) & Bdd::var_true(get_space(), vvs2[i]),
 					StructureConstraint::fn_and));
-				q =q1;
+				q = std::move(q1);
 			}
-			auto_ptr<Bdd> q1(p->ptr_product(*q, StructureConstraint::fn_or));
-			p =q1;
+			unique_ptr<Bdd> q1(p->ptr_product(*q, StructureConstraint::fn_or));
+			p = std::move(q1);
 
 		}
 
@@ -333,7 +333,7 @@ namespace Pareto
 			return p;
 		else
 		{
-			auto_ptr<Bdd> q1(p->ptr_product(*r, StructureConstraint::fn_or));
+			unique_ptr<Bdd> q1(p->ptr_product(*r, StructureConstraint::fn_or));
 			return q1;
 		}
 	}
@@ -442,7 +442,7 @@ namespace Pareto
 			if(doms2[i]!= Q.get_domain())
 				doms1 = doms1 * doms2[i];
 
-		auto_ptr<StructureConstraint> product(get_bdd_based().ptr_project(Q.get_domain()));
+		unique_ptr<StructureConstraint> product(get_bdd_based().ptr_project(Q.get_domain()));
 
 		return StructureRelation(doms1, *product);
 	}
@@ -456,7 +456,7 @@ namespace Pareto
 		for ( i = 0;i < doms2.size()  ;++i)
 			if(doms2[i]!= d)
 				doms1 = doms1 * doms2[i];
-		auto_ptr<StructureConstraint> product(get_bdd_based().ptr_project(d));
+		unique_ptr<StructureConstraint> product(get_bdd_based().ptr_project(d));
 
 		return StructureRelation(doms1, *product);
 	}
@@ -737,10 +737,10 @@ namespace Pareto
 			new_doms[i].RealVal = rel2.get_domains()[i].RealVal;
 		}
 
-		auto_ptr<BddConfset> r2(new BddConfset(new_doms,rel2));
-		auto_ptr<Bdd> b1(rel1.get_bdd().ptr_clone());
-		auto_ptr<Bdd> b2 (r2->get_bdd().ptr_clone());
-		auto_ptr<Bdd> b3(b1->ptr_product(*b2, StructureConstraint::fn_and));
+		unique_ptr<BddConfset> r2(new BddConfset(new_doms,rel2));
+		unique_ptr<Bdd> b1(rel1.get_bdd().ptr_clone());
+		unique_ptr<Bdd> b2 (r2->get_bdd().ptr_clone());
+		unique_ptr<Bdd> b3(b1->ptr_product(*b2, StructureConstraint::fn_and));
 
 		return StructureRelation(rel1.get_domains()*new_doms, *b3);
 
@@ -776,90 +776,90 @@ namespace Pareto
 	{
 		BddConfset *C = this;
 		unsigned int n = C->get_domains().size();
-		auto_ptr<BddConfset> Cm(new BddConfset( *C * *C));
-		auto_ptr<BddConfset> dm;
-		auto_ptr<BddConfset> iden;
+		unique_ptr<BddConfset> Cm(new BddConfset( *C * *C));
+		unique_ptr<BddConfset> dm;
+		unique_ptr<BddConfset> iden;
 
 		if(!h[0])
 		{
-			auto_ptr<Bdd> tmp = get_dominance((Cm->get_domains()[0]), (Cm->get_domains()[n]), false,false);
-			auto_ptr<Bdd> b1(new Bdd(C->project_on(0).get_bdd() & *tmp));
-			auto_ptr<BddConfset> dm1( new BddConfset((Domains) (Cm->get_domains()[0]) * (Domains) (Cm->get_domains()[n]), *b1));
-			auto_ptr<Bdd> b2(b1->ptr_product(Bdd::vars_equal(get_space(),(Cm->get_domains()[0]) , (Cm->get_domains()[n])),StructureConstraint::fn_and));
-			auto_ptr<BddConfset> iden1(new BddConfset((Domains) (Cm->get_domains()[0]) * (Domains) (Cm->get_domains()[n]), *b2));
-			dm = dm1;
-			iden = iden1;
+			unique_ptr<Bdd> tmp = get_dominance((Cm->get_domains()[0]), (Cm->get_domains()[n]), false,false);
+			unique_ptr<Bdd> b1(new Bdd(C->project_on(0).get_bdd() & *tmp));
+			unique_ptr<BddConfset> dm1( new BddConfset((Domains) (Cm->get_domains()[0]) * (Domains) (Cm->get_domains()[n]), *b1));
+			unique_ptr<Bdd> b2(b1->ptr_product(Bdd::vars_equal(get_space(),(Cm->get_domains()[0]) , (Cm->get_domains()[n])),StructureConstraint::fn_and));
+			unique_ptr<BddConfset> iden1(new BddConfset((Domains) (Cm->get_domains()[0]) * (Domains) (Cm->get_domains()[n]), *b2));
+			dm = std::move(dm1);
+			iden = std::move(iden1);
 		}
 		else
 		{
-			auto_ptr<BddConfset> dm1(new BddConfset((Domains) (Cm->get_domains()[0]) * (Domains) (Cm->get_domains()[n]), Bdd(get_space(),true)));
-			auto_ptr<BddConfset> iden1(new BddConfset((Domains) (Cm->get_domains()[0]) * (Domains) (Cm->get_domains()[n]), Bdd(get_space(),true)));
-			dm = dm1;
-			iden = iden1;
+			unique_ptr<BddConfset> dm1(new BddConfset((Domains) (Cm->get_domains()[0]) * (Domains) (Cm->get_domains()[n]), Bdd(get_space(),true)));
+			unique_ptr<BddConfset> iden1(new BddConfset((Domains) (Cm->get_domains()[0]) * (Domains) (Cm->get_domains()[n]), Bdd(get_space(),true)));
+			dm = std::move(dm1);
+			iden = std::move(iden1);
 		}
 
 
-		auto_ptr<Bdd> new_rel(dm->get_bdd_based().ptr_clone());
+		unique_ptr<Bdd> new_rel(dm->get_bdd_based().ptr_clone());
 
-		auto_ptr<Bdd> new_rel2(iden->get_bdd_based().ptr_clone());
+		unique_ptr<Bdd> new_rel2(iden->get_bdd_based().ptr_clone());
 
-		auto_ptr<Bdd> new_rel3(C->project_on(0).get_bdd_based().ptr_clone());
+		unique_ptr<Bdd> new_rel3(C->project_on(0).get_bdd_based().ptr_clone());
 
 
 		for(unsigned int i=1; i<n; ++i)
 		{
 			if(!h[i])
 			{
-				auto_ptr<Bdd> tmp = get_dominance((Cm->get_domains()[i]), (Cm->get_domains()[i+n]), false, false);
-				auto_ptr<Bdd> b1(new Bdd(C->project_on(i).get_bdd() & *tmp));
-				auto_ptr<BddConfset> dm1(new BddConfset((Domains) (Cm->get_domains()[i]) * (Domains) (Cm->get_domains()[i+n]), *b1));
-				auto_ptr<Bdd> b2(b1->ptr_product(Bdd::vars_equal(get_space(),(Cm->get_domains()[i]) , (Cm->get_domains()[i+n])), StructureConstraint::fn_and));
-				auto_ptr<BddConfset> iden1(new BddConfset((Domains) (Cm->get_domains()[i]) * (Domains) (Cm->get_domains()[i+n]), *b2));
-				dm = dm1;
-				iden = iden1;
+				unique_ptr<Bdd> tmp = get_dominance((Cm->get_domains()[i]), (Cm->get_domains()[i+n]), false, false);
+				unique_ptr<Bdd> b1(new Bdd(C->project_on(i).get_bdd() & *tmp));
+				unique_ptr<BddConfset> dm1(new BddConfset((Domains) (Cm->get_domains()[i]) * (Domains) (Cm->get_domains()[i+n]), *b1));
+				unique_ptr<Bdd> b2(b1->ptr_product(Bdd::vars_equal(get_space(),(Cm->get_domains()[i]) , (Cm->get_domains()[i+n])), StructureConstraint::fn_and));
+				unique_ptr<BddConfset> iden1(new BddConfset((Domains) (Cm->get_domains()[i]) * (Domains) (Cm->get_domains()[i+n]), *b2));
+				dm = std::move(dm1);
+				iden = std::move(iden1);
 			}
 			else
 			{
-				auto_ptr<BddConfset> dm1(new BddConfset((Domains) (Cm->get_domains()[i]) * (Domains) (Cm->get_domains()[i+n]),  Bdd(get_space(),true)));
-				auto_ptr<BddConfset> iden1(new BddConfset((Domains) (Cm->get_domains()[i]) * (Domains) (Cm->get_domains()[i+n]), Bdd(get_space(),true)));
-				dm = dm1;
-				iden = iden1;
+				unique_ptr<BddConfset> dm1(new BddConfset((Domains) (Cm->get_domains()[i]) * (Domains) (Cm->get_domains()[i+n]),  Bdd(get_space(),true)));
+				unique_ptr<BddConfset> iden1(new BddConfset((Domains) (Cm->get_domains()[i]) * (Domains) (Cm->get_domains()[i+n]), Bdd(get_space(),true)));
+				dm = std::move(dm1);
+				iden = std::move(iden1);
 			}
 
-			auto_ptr<Bdd> product1(new_rel->ptr_product(dm->get_bdd_based(),
+			unique_ptr<Bdd> product1(new_rel->ptr_product(dm->get_bdd_based(),
 									StructureConstraint::fn_and));
 
-			auto_ptr<Bdd> product(product1->ptr_product(Cm->get_bdd_based(),
+			unique_ptr<Bdd> product(product1->ptr_product(Cm->get_bdd_based(),
 									StructureConstraint::fn_and));
 
-			auto_ptr<Bdd> product4(new_rel2->ptr_product(iden->get_bdd_based(),
+			unique_ptr<Bdd> product4(new_rel2->ptr_product(iden->get_bdd_based(),
 									StructureConstraint::fn_and));
 
-			auto_ptr<Bdd> product2(product4->ptr_product(Cm->get_bdd_based(),
+			unique_ptr<Bdd> product2(product4->ptr_product(Cm->get_bdd_based(),
 									StructureConstraint::fn_and));
 
-			new_rel = product;
-			new_rel2 = product2;
+			new_rel = std::move(product);
+			new_rel2 = std::move(product2);
 		}
 
-		auto_ptr<Bdd> product(new_rel->ptr_product(*new_rel2,
+		unique_ptr<Bdd> product(new_rel->ptr_product(*new_rel2,
 									StructureConstraint::fn_minus));
 
 		for(unsigned int i = 0; i < n; ++i)
 		{
-			auto_ptr<Bdd> product1(product->ptr_project(C->get_domain(i)));
+			unique_ptr<Bdd> product1(product->ptr_project(C->get_domain(i)));
 
-			product = product1;
+			product = std::move(product1);
 		}
 
 		for(unsigned int i = 0; i < n; ++i)
 		{
-			auto_ptr<Bdd> product1(product->ptr_rename(Domain::map_vars(Cm->get_domain(i+n), C->get_domain(i))));
+			unique_ptr<Bdd> product1(product->ptr_rename(Domain::map_vars(Cm->get_domain(i+n), C->get_domain(i))));
 
-			product = product1;
+			product = std::move(product1);
 		}
 
-		auto_ptr<Bdd> product4(C->get_bdd_based().ptr_product(*product,
+		unique_ptr<Bdd> product4(C->get_bdd_based().ptr_product(*product,
 									StructureConstraint::fn_minus));
 
 		return StructureRelation(C->get_domains(), *product4);;
@@ -870,22 +870,22 @@ namespace Pareto
 	{
 		BddConfset *C = this;
 		unsigned int n = C->get_domains().size();
-		auto_ptr<BddConfset> Cm(new BddConfset( *C * *C));
-		auto_ptr<BddConfset> dm(new BddConfset(*C));
+		unique_ptr<BddConfset> Cm(new BddConfset( *C * *C));
+		unique_ptr<BddConfset> dm(new BddConfset(*C));
 
 		for(unsigned int i=0; i<n; ++i)
 		{
 			if(!h[i])
 			{
-				auto_ptr<Bdd> tmp = get_dominance((C->get_domains()[i]), (Cm->get_domains()[i+n]), false, true);
-				auto_ptr<Bdd> b1(new Bdd(C->project_on(i).get_bdd() & *tmp));
-				auto_ptr<BddConfset> dm1(new BddConfset(dm->compose(i, BddRelation((Domains) Cm->get_domain(i) * (Domains) Cm->get_domain(i+n), *b1))));
-				dm = dm1;
+				unique_ptr<Bdd> tmp = get_dominance((C->get_domains()[i]), (Cm->get_domains()[i+n]), false, true);
+				unique_ptr<Bdd> b1(new Bdd(C->project_on(i).get_bdd() & *tmp));
+				unique_ptr<BddConfset> dm1(new BddConfset(dm->compose(i, BddRelation((Domains) Cm->get_domain(i) * (Domains) Cm->get_domain(i+n), *b1))));
+				dm = std::move(dm1);
 			}
 		}
 
-		auto_ptr<BddConfset> dmtm(new BddConfset(C->get_domains(), *dm));
-		auto_ptr<BddConfset> dm2(new BddConfset(*C & *dmtm));
+		unique_ptr<BddConfset> dmtm(new BddConfset(C->get_domains(), *dm));
+		unique_ptr<BddConfset> dm2(new BddConfset(*C & *dmtm));
 		return (*C - *dm2);
 	}
 
@@ -914,12 +914,12 @@ namespace Pareto
 		dom0 = dom0 * (D0.get_domain(D0.arity()-1) - sd.lowest() + sd.highest() + 1);
 		new_doms = new_doms * (dom0[dom0.size()-1] + (dom0[dom0.size()-1].highest()-dom0[dom0.size()-1].lowest() +1));
 
-		auto_ptr<BddConfset> drename(new BddConfset(dom0, D0));
-		auto_ptr<BddConfset> bc(new BddConfset(C0.get_domains()*dom0, C0.get_bdd() & drename->get_bdd()));
-		auto_ptr<Bdd> btest(new Bdd(get_add(C0.get_domain(C0.get_domains().size()-1), dom0[dom0.size()-1], new_doms[new_doms.size()-1])));
-		auto_ptr<BddConfset> badd(new BddConfset((Domains) C0.get_domain(C0.get_domains().size()-1) * (Domains) dom0[dom0.size()-1] * (Domains) new_doms[new_doms.size()-1], *btest));
-		auto_ptr<BddConfset> bv1(new BddConfset((Domains) C0.get_domains() * (Domains) dom0 * (Domains) new_doms[new_doms.size()-1], badd->get_bdd() & bc->get_bdd() ));
-		auto_ptr<BddConfset> bv2(new BddConfset(bv1->my_abstract(C0.arity()-1)));
+		unique_ptr<BddConfset> drename(new BddConfset(dom0, D0));
+		unique_ptr<BddConfset> bc(new BddConfset(C0.get_domains()*dom0, C0.get_bdd() & drename->get_bdd()));
+		unique_ptr<Bdd> btest(new Bdd(get_add(C0.get_domain(C0.get_domains().size()-1), dom0[dom0.size()-1], new_doms[new_doms.size()-1])));
+		unique_ptr<BddConfset> badd(new BddConfset((Domains) C0.get_domain(C0.get_domains().size()-1) * (Domains) dom0[dom0.size()-1] * (Domains) new_doms[new_doms.size()-1], *btest));
+		unique_ptr<BddConfset> bv1(new BddConfset((Domains) C0.get_domains() * (Domains) dom0 * (Domains) new_doms[new_doms.size()-1], badd->get_bdd() & bc->get_bdd() ));
+		unique_ptr<BddConfset> bv2(new BddConfset(bv1->my_abstract(C0.arity()-1)));
 
 		return  new BddConfset(bv2->my_abstract(bv2->arity()-2));
 	}
@@ -982,55 +982,55 @@ namespace Pareto
 	BddConfset BddConfset::mmkp(vector<BddConfset> S,vector<BddConfset> V, vector<unsigned int> R)
 	{
 
-		 auto_ptr<BddConfset> Vm(new BddConfset(V[0]));
+		unique_ptr<BddConfset> Vm(new BddConfset(V[0]));
 		vector<unsigned int> k;
 		vector<bool> h;
 		for(unsigned int i=1; i<S.size(); ++i)
 		{
-			auto_ptr<BddConfset> vtmp(add_values(*Vm,V[i]));
-			Vm = vtmp;
+			unique_ptr<BddConfset> vtmp(add_values(*Vm,V[i]));
+			Vm = std::move(vtmp);
 		}
 
-		auto_ptr<BddConfset> values(new BddConfset(Vm->my_abstract(Vm->arity()-1)));
+		unique_ptr<BddConfset> values(new BddConfset(Vm->my_abstract(Vm->arity()-1)));
 		for(unsigned int k=0; k<R.size(); ++k)
 		{
 			vector<unsigned int> rtmp;
 			rtmp.push_back(R[k]);
-			auto_ptr<BddConfset> BCtmp(new BddConfset(S[0]));
+			unique_ptr<BddConfset> BCtmp(new BddConfset(S[0]));
 			for(unsigned int j=0; j<k; ++j)
 			{
-				auto_ptr<BddConfset> BCtmp2(new BddConfset(BCtmp->my_abstract(0)));
-				BCtmp = BCtmp2;
+				unique_ptr<BddConfset> BCtmp2(new BddConfset(BCtmp->my_abstract(0)));
+				BCtmp = std::move(BCtmp2);
 			}
 			for(unsigned int j=k+1; j<R.size(); ++j)
 			{
-				auto_ptr<BddConfset> BCtmp2(new BddConfset(BCtmp->my_abstract(1)));
-				BCtmp = BCtmp2;
+				unique_ptr<BddConfset> BCtmp2(new BddConfset(BCtmp->my_abstract(1)));
+				BCtmp = std::move(BCtmp2);
 			}
 
-			auto_ptr<BddConfset> Cm = BCtmp;
+			unique_ptr<BddConfset> Cm = std::move(BCtmp);
 
 
 			for(unsigned int i=1; i<S.size(); ++i)
 			{
 
-				auto_ptr<BddConfset> BCtmp(new BddConfset(S[i]));
+				unique_ptr<BddConfset> BCtmp(new BddConfset(S[i]));
 
 				for(unsigned int j=0; j<k; ++j)
 				{
-					auto_ptr<BddConfset> BCtmp2(new BddConfset(BCtmp->my_abstract(0)));
-					BCtmp = BCtmp2;
+					unique_ptr<BddConfset> BCtmp2(new BddConfset(BCtmp->my_abstract(0)));
+					BCtmp = std::move(BCtmp2);
 				}
 				for(unsigned int j=k+1; j<R.size(); ++j)
 				{
-					auto_ptr<BddConfset> BCtmp2(new BddConfset(BCtmp->my_abstract(1)));
-					BCtmp = BCtmp2;
+					unique_ptr<BddConfset> BCtmp2(new BddConfset(BCtmp->my_abstract(1)));
+					BCtmp = std::move(BCtmp2);
 				}
 
-				auto_ptr<BddConfset> ctmp(constrain(*Cm,*BCtmp, rtmp));
-				Cm = ctmp;
+				unique_ptr<BddConfset> ctmp(constrain(*Cm,*BCtmp, rtmp));
+				Cm = std::move(ctmp);
 			}
-			auto_ptr<BddConfset> ctmp1(new BddConfset(values->get_domains(),Cm->my_abstract(0)));
+			unique_ptr<BddConfset> ctmp1(new BddConfset(values->get_domains(),Cm->my_abstract(0)));
 			Bdd* btmp = (new Bdd(ctmp1->get_bdd()));
 			const unsigned int nodeCount = btmp->nodes().size();
 			prQueue.push(BDDnc(btmp, nodeCount));
@@ -1062,8 +1062,8 @@ namespace Pareto
 			for ( i = 0;i < doms2.size()  ;++i)
 				if(i != k)
 					doms1 = doms1 * doms2[i];
-			auto_ptr<Bdd> b1(get_bdd().ptr_clone());
-			auto_ptr<Bdd> b2(b1->ptr_project(get_domain(k)));
+			unique_ptr<Bdd> b1(get_bdd().ptr_clone());
+			unique_ptr<Bdd> b2(b1->ptr_project(get_domain(k)));
 
 			return BddConfset(doms1, *b2);
 	}
@@ -1080,8 +1080,8 @@ namespace Pareto
 				else
 					doms1 = doms1 * doms2[i];
 			Domain abs_dom = abs_doms.union_all();
-			auto_ptr<Bdd> b1(get_bdd().ptr_clone());
-			auto_ptr<Bdd> b2(b1->ptr_project(abs_dom));
+			unique_ptr<Bdd> b1(get_bdd().ptr_clone());
+			unique_ptr<Bdd> b2(b1->ptr_project(abs_dom));
 
 			return BddConfset(doms1, *b2);
 	}
@@ -1111,7 +1111,7 @@ namespace Pareto
 			}
 
 		}
-		auto_ptr<BddConfset> r2(new BddConfset(new_doms,D));
+		unique_ptr<BddConfset> r2(new BddConfset(new_doms,D));
 		Domains new_doms2;
 		for(unsigned int i=0; i<new_doms.size(); ++i)
 			if(abstr)
@@ -1132,7 +1132,7 @@ namespace Pareto
 		BddConfset BddConfset::ProdCons(const BddConfset& C2, int pq, int cq,
 										  Value *(*f)(const Value*))
 		{
-			auto_ptr<BddConfset> rel2(new BddConfset(C2));
+			unique_ptr<BddConfset> rel2(new BddConfset(C2));
 
 			Domain doms = get_domains().union_all();
 			Domains new_doms;
@@ -1147,7 +1147,7 @@ namespace Pareto
 					}
 			}
 
-			auto_ptr<BddConfset> r2(new BddConfset(new_doms,C2));
+			unique_ptr<BddConfset> r2(new BddConfset(new_doms,C2));
 
 			set<double> RQ1 = get_domain(pq).RealVal.FValues;
 
@@ -1179,7 +1179,7 @@ namespace Pareto
 			}
 			Confset *Cpc = calctmp.prodcons(Cp, 0, Cc, 0, f);
 
-			auto_ptr<BddConfset> PQuanty(new BddConfset((Domains) get_domain(pq)*(Domains) dm, Bdd(get_space(),false)));
+			unique_ptr<BddConfset> PQuanty(new BddConfset((Domains) get_domain(pq)*(Domains) dm, Bdd(get_space(),false)));
 
 			Iterator i0(Cpc);
 

@@ -34,14 +34,14 @@ namespace gbdd
 	// A wrapper space that implements locks with a POSIX thread mutex, allows several threads to use the same space.
 	class MutexSpace : public gbdd::Space
 	{
-		auto_ptr<Space> space;
+		unique_ptr<Space> space;
 		pthread_mutex_t space_mutex;
 
 		pthread_t locking_thread;
 		unsigned int locks;
 		pthread_mutex_t locks_mutex;
 	public:
-		MutexSpace(auto_ptr<Space> space);
+		MutexSpace(unique_ptr<Space> space);
 		virtual ~MutexSpace();
 
 	void lock();

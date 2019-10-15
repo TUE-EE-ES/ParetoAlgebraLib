@@ -234,10 +234,10 @@ namespace Pareto {
 	Confset *ExplCalculator::minimise(Confset *C)
 	{
 		switch (minalgo) {
-		case DC:
+		case ExplMinAlgos::DC:
 			return minimiseDivideNConquer(C);
 			break;
-		case SC:
+		case ExplMinAlgos::SC:
 		default:
 			return minimiseSimpleCull(C);
 			break;
@@ -460,7 +460,7 @@ namespace Pareto {
 	{
 		ExplConfset *C0 = (ExplConfset*) C;
 		texplconfset::const_iterator iter;
-		Conf *c;
+		Conf *c = NULL;
 
 		if (C->size() > 0) {
 			for (iter = C0->confset.begin(); iter != C0->confset.end(); iter++) {
@@ -469,7 +469,7 @@ namespace Pareto {
 			}
 
 			C0->w++;
-			C0->sig = c->signature();
+			if (c != NULL) C0->sig = c->signature();
 			C0->visible.insert(C0->w - 1);
 		}
 		
@@ -480,7 +480,7 @@ namespace Pareto {
 	{
 		ExplConfset *C0 = (ExplConfset*) C;
 		texplconfset::const_iterator iter;
-		Conf *c;
+		Conf *c = NULL;
 		
 		if (C->size() > 0) {
 			for (iter = C0->confset.begin(); iter != C0->confset.end(); iter++) {
@@ -488,10 +488,12 @@ namespace Pareto {
 				c->append(F(c, x));
 			}
 			
-			for (unsigned i = C0->w; i < c->size(); i++)
-				C0->visible.insert(i);
-			C0->w = c->size();
-			C0->sig = c->signature();
+			if (c != NULL) {
+				for (unsigned i = C0->w; i < c->size(); i++)
+					C0->visible.insert(i);
+				C0->w = c->size();
+				C0->sig = c->signature();
+			}
 		}
 		
 		return C;

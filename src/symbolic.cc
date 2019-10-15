@@ -104,7 +104,7 @@ namespace Pareto
 			
 			if((setQuants.size()<=i) || !setQuants[i])
 			{
-				if((*i0)->signature()[i+1] == QFLOAT )
+				if((*i0)->signature()[i+1] == signature_::QFLOAT )
 					RQ1.IsReal = true;
 				else
 					RQ1.IsUnordered = true;
@@ -112,7 +112,7 @@ namespace Pareto
 				Iterator i1(econf);
 				while (!i1.done()) 
 				{
-					if((*i0)->signature()[i+1] == QFLOAT )
+					if((*i0)->signature()[i+1] == signature_::QFLOAT )
 						RQ1.FValues.insert(((FloatValue*)((*i1)->get(i)))->getFloat());
 					else
 						RQ1.FValues.insert(( (FloatValue*)(*i1)->get(i))->getFloat());
@@ -469,7 +469,7 @@ namespace Pareto
 		{
 			Cs->rquants[k] = new RealQuant();
 			rq1 = new RealQuant();
-			if(C->signature()[k+1] == QFLOAT )
+			if(C->signature()[k+1] == signature_::QFLOAT )
 				rq1->IsReal = true;
 			else
 				rq1->IsUnordered = true;
@@ -477,7 +477,7 @@ namespace Pareto
 			Iterator i1(Cs->econf);
 			while (!i1.done()) 
 			{
-				if(C->signature()[k+1] == QFLOAT )
+				if(C->signature()[k+1] == signature_::QFLOAT )
 					rq1->FValues.insert(((FloatConf*)(*i1))->getFloat(k));
 				else
 					rq1->FValues.insert(( (FloatValue*)((GenConf*)(*i1))->get(k))->getFloat());
@@ -497,7 +497,7 @@ namespace Pareto
 			Iterator i1(Ds->econf);
 			while (!i1.done()) 
 			{
-				if(C->signature()[k+1] == QFLOAT )
+				if(C->signature()[k+1] == signature_::QFLOAT )
 					rq1->FValues.insert(((FloatConf*)(*i1))->getFloat(k));
 				else
 					rq1->FValues.insert(( (FloatValue*)((GenConf*)(*i1))->get(k))->getFloat());
@@ -506,7 +506,7 @@ namespace Pareto
 		}
 
 		RealQuant *res = new RealQuant();
-		if(C->signature()[k+1] == QFLOAT )
+		if(C->signature()[k+1] == signature_::QFLOAT )
 				res->IsReal = true;
 			else
 				res->IsUnordered = true;

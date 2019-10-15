@@ -131,7 +131,7 @@ namespace Pareto
 		Bdd get_add(const BddSet& s0, const BddSet& s1, int a); 
 		Bdd get_add(const BddSet& s0, const BddSet& s1); 
 		BddConfset *Conv_exp(Confset *);
-		auto_ptr<Bdd> get_dominance(const Domain& d0, const Domain& d1, bool gl, bool disjoined);
+		unique_ptr<Bdd> get_dominance(const Domain& d0, const Domain& d1, bool gl, bool disjoined);
 
 		
 

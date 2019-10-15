@@ -75,8 +75,8 @@ namespace Pareto
 		Hidevec hidden;
 		friend class SymCalculator;
 
-		BddConfset *rel;
-		Confset *econf;
+		BddConfset *rel = NULL;
+		Confset *econf = NULL;
 		bool conv;
 		ExplCalculator calce;
 		Hidevec setQuants;

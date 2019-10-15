@@ -46,7 +46,7 @@ namespace Pareto {
 	/// Explicit set of configurations
 	class ExplConfset : public Confset {	
 	public:
-		ExplConfset(Calculator &c) : Confset(c) {}
+		ExplConfset(Calculator &c) : Confset(c), w(0) {}
 		virtual ~ExplConfset(void);
 		virtual Confset *copy(void) const;
 		virtual void add(Conf*);
@@ -122,7 +122,7 @@ namespace Pareto {
 	};
 	
 	/// Types of minimisation algorithms
-	typedef enum ExplMinAlgos_ {
+	typedef enum class ExplMinAlgos_ {
 		SC,
 		DC
 	} ExplMinAlgos;
@@ -130,8 +130,11 @@ namespace Pareto {
 	/// Explicit Pareto calculator
 	class ExplCalculator : public Calculator
 	{
+
+
+
 	public:	
-		ExplCalculator(ExplMinAlgos m = SC) : minalgo(m) {}
+		ExplCalculator(ExplMinAlgos m = ExplMinAlgos_::SC) : minalgo(m) {}
 		virtual ~ExplCalculator() {}
 
 		virtual Confset *newConfset(void);
